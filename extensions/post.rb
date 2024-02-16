@@ -18,7 +18,7 @@ module MultilingualTranslatorPostExtension
   end
 
   def save_custom_fields(force = false)
-    if post_number && post_number == 1 && ultilingual::Translator.content_tag_sync_enabled
+    if post_number && post_number == 1 && Multilingual::Translator.content_tag_sync_enabled
       old_lang = get_old_lang
     end
 
