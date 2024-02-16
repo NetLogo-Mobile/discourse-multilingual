@@ -18,13 +18,13 @@ module MultilingualTranslatorPostExtension
   end
 
   def save_custom_fields(force = false)
-    if Multilingual::Translator.content_tag_sync_enabled
+    if post_number && post_number == 1 && ultilingual::Translator.content_tag_sync_enabled
       old_lang = get_old_lang
     end
 
     super(force)
 
-    if Multilingual::Translator.content_tag_sync_enabled
+    if post_number && post_number == 1 && Multilingual::Translator.content_tag_sync_enabled
       new_lang = get_new_lang
       update_lang(old_lang, new_lang) if new_lang != old_lang
     end
