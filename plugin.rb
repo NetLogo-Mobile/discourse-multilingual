@@ -331,11 +331,14 @@ after_initialize do
 
   TopicQuery.add_custom_filter(:content_languages) do |result, query|
     if Multilingual::ContentLanguage.topic_filtering_enabled
+      locale = I18n.locale.to_s
       content_languages = query.user ?
                           query.user.content_languages :
                           query.options[:content_languages] ?
                           [*query.options[:content_languages]] :
-                          [I18n.locale.to_s]
+                          locale =~ /^zh(_[A-Z]+)?$/ ?
+                          [locale] :
+                          [locale, "en"]
 
       if content_languages.present? && content_languages.any?
         result = result.joins(:tags).where("tags.name in (?)", content_languages)
