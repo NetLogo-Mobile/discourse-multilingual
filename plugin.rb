@@ -333,7 +333,9 @@ after_initialize do
     if Multilingual::ContentLanguage.topic_filtering_enabled
       content_languages = query.user ?
                           query.user.content_languages :
-                          [*query.options[:content_languages]]
+                          query.options[:content_languages] ?
+                          [*query.options[:content_languages]] :
+                          [I18n.locale.to_s]
 
       if content_languages.present? && content_languages.any?
         result = result.joins(:tags).where("tags.name in (?)", content_languages)
