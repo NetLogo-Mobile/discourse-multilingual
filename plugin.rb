@@ -335,10 +335,10 @@ after_initialize do
       content_languages = query.user ?
                           query.user.content_languages :
                           query.options[:content_languages] ?
-                          [*query.options[:content_languages]] :
+                          [*query.options[:content_languages]].uniq :
                           locale =~ /^zh(_[A-Z]+)?$/ ?
                           [locale] :
-                          [locale, "en"]
+                          [locale, "en"].uniq
 
       if content_languages.present? && content_languages.any?
         result = result.joins(:tags).where("tags.name in (?)", content_languages)
