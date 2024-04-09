@@ -298,6 +298,18 @@ after_initialize do
     object.name
   end
 
+  on(:user_created) do |user|
+    if Multilingual::ContentLanguage.enabled
+      locale = I18n.locale.to_s
+      content_languages = locale =~ /^zh(_[A-Z]+)?$/ ?
+                          [locale] :
+                          [locale, "en"].uniq
+
+      user.custom_fields['content_languages'] = content_languages
+      user.save_custom_fields(true)
+    end
+  end
+
   ## This is necessary due to the workaround for jquery ajax added in multilingual-initializer
   on(:user_updated) do |user|
     if Multilingual::ContentLanguage.enabled && user.custom_fields['content_languages'].blank?
