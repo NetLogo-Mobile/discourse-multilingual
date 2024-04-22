@@ -54,6 +54,7 @@ after_initialize do
     ../extensions/i18n.rb
     ../extensions/js_locale_helper.rb
     ../extensions/post.rb
+    ../extensions/topic.rb
     ../extensions/tag_group.rb
     ../extensions/topic_serializer.rb
     ../extensions/application_controller.rb
@@ -75,6 +76,7 @@ after_initialize do
   ::DiscourseTagging.singleton_class.prepend DiscourseTaggingMultilingualExtension
   ::CategoryList.prepend CategoryListMultilingualExtension
   ::Post.prepend MultilingualTranslatorPostExtension
+  ::Topic.prepend MultilingualTranslatorTopicExtension
   ::ApplicationController.prepend ApplicationControllerMultilingualExtension
 
   register_html_builder('server:before-script-load') do |ctx|
