@@ -76,7 +76,7 @@ after_initialize do
   ::DiscourseTagging.singleton_class.prepend DiscourseTaggingMultilingualExtension
   ::CategoryList.prepend CategoryListMultilingualExtension
   ::Post.prepend MultilingualTranslatorPostExtension
-  ::Topic.prepend MultilingualTranslatorTopicExtension
+  ::Topic.singleton_class.prepend MultilingualTranslatorTopicExtension
   ::ApplicationController.prepend ApplicationControllerMultilingualExtension
 
   register_html_builder('server:before-script-load') do |ctx|
