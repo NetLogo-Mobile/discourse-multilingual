@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module MultilingualTranslatorTopicExtension
-  def self.for_digest(user, since, opts = nil)
+  def for_digest(user, since, opts = nil)
     topics = super(user, since, opts)
 
     if Multilingual::ContentLanguage.topic_filtering_enabled
