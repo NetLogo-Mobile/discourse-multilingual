@@ -55,6 +55,7 @@ after_initialize do
     ../extensions/js_locale_helper.rb
     ../extensions/post.rb
     ../extensions/topic.rb
+    ../extensions/notify_mailing_list_subscribers.rb
     ../extensions/tag_group.rb
     ../extensions/topic_serializer.rb
     ../extensions/application_controller.rb
@@ -78,6 +79,7 @@ after_initialize do
   ::Post.prepend MultilingualTranslatorPostExtension
   ::Topic.prepend MultilingualTranslatorTopicExtension
   ::ApplicationController.prepend ApplicationControllerMultilingualExtension
+  ::Jobs::NotifyMailingListSubscribers.prepend NotifyMailingListSubscriberMultilingualsExtension
 
   register_html_builder('server:before-script-load') do |ctx|
     loader = Multilingual::LocaleLoader.new(ctx)
