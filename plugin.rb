@@ -56,6 +56,7 @@ after_initialize do
     ../extensions/post.rb
     ../extensions/topic.rb
     ../extensions/notify_mailing_list_subscribers.rb
+    ../extensions/user_notifications.rb
     ../extensions/tag_group.rb
     ../extensions/topic_serializer.rb
     ../extensions/application_controller.rb
@@ -80,6 +81,7 @@ after_initialize do
   ::Topic.singleton_class.prepend MultilingualTranslatorTopicExtension
   ::ApplicationController.prepend ApplicationControllerMultilingualExtension
   ::Jobs::NotifyMailingListSubscribers.prepend NotifyMailingListSubscriberMultilingualsExtension
+  ::UserNotifications.prepend UserNotificationsMultilingualExtension
 
   register_html_builder('server:before-script-load') do |ctx|
     loader = Multilingual::LocaleLoader.new(ctx)
