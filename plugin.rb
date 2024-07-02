@@ -80,8 +80,7 @@ after_initialize do
   ::Post.prepend MultilingualTranslatorPostExtension
   ::Topic.singleton_class.prepend MultilingualTranslatorTopicExtension
   ::ApplicationController.prepend ApplicationControllerMultilingualExtension
-  ::Jobs::NotifyMailingListSubscribers.prepend NotifyMailingListSubscriberMultilingualsExtension
-  ::UserNotifications.prepend UserNotificationsMultilingualExtension
+  ::Jobs::NotifyMailingListSubscribers.prepend NotifyMailingListSubscriberMultilingualExtension
 
   register_html_builder('server:before-script-load') do |ctx|
     loader = Multilingual::LocaleLoader.new(ctx)

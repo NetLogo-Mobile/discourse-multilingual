@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module NotifyMailingListSubscriberMultilingualsExtension
+module NotifyMailingListSubscriberMultilingualExtension
   # This is largely taken from ::Jobs::NotifyMailingListSubscribers in Discourse
   def execute(args)
     return if SiteSetting.disable_mailing_list_mode
@@ -68,15 +68,17 @@ module NotifyMailingListSubscriberMultilingualsExtension
         )
     end
 
-    users =
-      users.where(
-          "EXISTS (
-             SELECT 1
-             FROM user_custom_fields ucf
-             WHERE ucf.user_id = users.id and ucf.name = 'content_languages' and ucf.value in (?)
-           )",
-          post.topic.content_languages
-        )
+    if Multilingual::ContentLanguage.topic_filtering_enabled
+      users =
+        users.where(
+            "EXISTS (
+               SELECT 1
+               FROM user_custom_fields ucf
+               WHERE ucf.user_id = users.id and ucf.name = 'content_languages' and ucf.value in (?)
+             )",
+            post.topic.content_languages
+          )
+    end
 
     users = users.where(approved: true) if SiteSetting.must_approve_users
 
