@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module NotifyMailingListSubscriberMultilingualsExtension
+module NotifyMailingListSubscriberMultilingualExtension
   # This is largely taken from ::Jobs::NotifyMailingListSubscribers in Discourse
   def execute(args)
     return if SiteSetting.disable_mailing_list_mode
