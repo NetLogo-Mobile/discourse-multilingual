@@ -57,7 +57,6 @@ after_initialize do
     ../extensions/post_alerter.rb
     ../extensions/topic.rb
     ../extensions/notify_mailing_list_subscribers.rb
-    ../extensions/user_notifications.rb
     ../extensions/tag_group.rb
     ../extensions/topic_serializer.rb
     ../extensions/application_controller.rb
