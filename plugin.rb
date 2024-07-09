@@ -54,9 +54,9 @@ after_initialize do
     ../extensions/i18n.rb
     ../extensions/js_locale_helper.rb
     ../extensions/post.rb
+    ../extensions/post_alerter.rb
     ../extensions/topic.rb
     ../extensions/notify_mailing_list_subscribers.rb
-    ../extensions/user_notifications.rb
     ../extensions/tag_group.rb
     ../extensions/topic_serializer.rb
     ../extensions/application_controller.rb
@@ -78,6 +78,7 @@ after_initialize do
   ::DiscourseTagging.singleton_class.prepend DiscourseTaggingMultilingualExtension
   ::CategoryList.prepend CategoryListMultilingualExtension
   ::Post.prepend MultilingualTranslatorPostExtension
+  ::PostAlerter.prepend PostAlerterMultilingualExtension
   ::Topic.singleton_class.prepend MultilingualTranslatorTopicExtension
   ::ApplicationController.prepend ApplicationControllerMultilingualExtension
   ::Jobs::NotifyMailingListSubscribers.prepend NotifyMailingListSubscriberMultilingualExtension
