@@ -1,9 +1,8 @@
 Unless otherwise noted, code in this repository is Copyright 2020 by Angus
 McLeod.
 
-Parts of the code in extensions/notify_mailing_list_subscribers.rb and
-extensions/post_alerter.rb are Copyright 2023 Civilized Discourse Construction
-Kit, Inc.
+Parts of the code that are taken from Discourse are Copyright 2023 Civilized
+Discourse Construction Kit, Inc.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
