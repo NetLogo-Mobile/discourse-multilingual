@@ -59,6 +59,7 @@ after_initialize do
     ../extensions/notify_mailing_list_subscribers.rb
     ../extensions/tag_group.rb
     ../extensions/topic_serializer.rb
+    ../extensions/topic_tracking_state.rb
     ../extensions/application_controller.rb
     ../extensions/tag.rb
   ].each do |path|
@@ -72,6 +73,7 @@ after_initialize do
   ::ExtraLocalesController.singleton_class.prepend ExtraLocalesControllerMultilingualClassExtension
   ::ExtraLocalesController.prepend ExtraLocalesControllerMultilingualExtension
   ::TopicViewSerializer.prepend TopicSerializerMultilingualExtension
+  ::TopicTrackingState.singleton_class.prepend TopicTrackingStateMultilingualExtension
   ::TopicListItemSerializer.prepend TopicSerializerMultilingualExtension
   ::TagGroup.singleton_class.prepend TagGroupMultilingualExtension
   ::Tag.singleton_class.prepend TagMultilingualExtension
