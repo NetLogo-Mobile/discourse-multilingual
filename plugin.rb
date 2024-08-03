@@ -57,6 +57,7 @@ after_initialize do
     ../extensions/post_alerter.rb
     ../extensions/topic.rb
     ../extensions/notify_mailing_list_subscribers.rb
+    ../extensions/search.rb
     ../extensions/tag_group.rb
     ../extensions/topic_serializer.rb
     ../extensions/topic_tracking_state.rb
@@ -81,6 +82,7 @@ after_initialize do
   ::CategoryList.prepend CategoryListMultilingualExtension
   ::Post.prepend MultilingualTranslatorPostExtension
   ::PostAlerter.prepend PostAlerterMultilingualExtension
+  ::Search.prepend SearchMultilingualExtension
   ::Topic.singleton_class.prepend MultilingualTranslatorTopicExtension
   ::ApplicationController.prepend ApplicationControllerMultilingualExtension
   ::Jobs::NotifyMailingListSubscribers.prepend NotifyMailingListSubscriberMultilingualExtension
