@@ -16,11 +16,6 @@ module MultilingualTranslatorTopicExtension
       end
     end
 
-    # Work around a bug in Discourse that causes duplicate topics to appear in
-    # digests.
-    topics = Topic.where(id: topics.limit(nil).select(:id)).distinct
-    topics = topics.limit(opts[:limit]) if opts and opts[:limit]
-
     topics
   end
 end
