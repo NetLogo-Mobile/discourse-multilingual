@@ -1,5 +1,5 @@
-import SelectKitRowComponent from "select-kit/components/select-kit/select-kit-row";
 import { default as DiscourseURL, userPath } from "discourse/lib/url";
+import SelectKitRowComponent from "select-kit/components/select-kit/select-kit-row";
 import {
   addParam,
   contentLanguageParam,
@@ -11,7 +11,7 @@ export default SelectKitRowComponent.extend({
       DiscourseURL.routeTo(
         userPath(this.currentUser.username_lower + "/preferences/interface")
       );
-    } else if (this.item.icon === "times") {
+    } else if (this.item.icon === "xmark") {
       addParam(contentLanguageParam, null, { ctx: this });
     } else if (!this.currentUser) {
       addParam(contentLanguageParam, this.rowValue, { ctx: this });
